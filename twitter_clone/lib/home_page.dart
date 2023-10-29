@@ -8,8 +8,6 @@ import 'package:twitter_clone/bottomNav/search.dart';
 import 'package:twitter_clone/float_Act.dart';
 import 'package:twitter_clone/my_drawer.dart';
 
-import 'Info_page.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 

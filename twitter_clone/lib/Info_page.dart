@@ -2,8 +2,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 
-import 'Info_page.dart';
-
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
 
