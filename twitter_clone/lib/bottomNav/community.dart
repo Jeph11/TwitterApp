@@ -11,7 +11,7 @@ class CommunityIcon extends StatelessWidget {
             body: Column(
               children: [
                 Text(
-                  '@ojephthans',
+                  '@ojepht',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.secondary,
                   ),

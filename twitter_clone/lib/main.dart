@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/theme/dark_theme.dart';
-import 'package:twitter_clone/theme/ligth_theme.dart';
-
-import 'home_page.dart';
+import 'package:twitter_clone/first_page.dart';
+import 'package:twitter_clone/theme/theme_constant.dart';
+import 'package:twitter_clone/theme/theme_manager.dart';
 
 void main() {
   runApp(const TwitterApp());
 }
 
-class TwitterApp extends StatelessWidget {
+ThemeManager _themeManager = ThemeManager();
+
+class TwitterApp extends StatefulWidget {
   const TwitterApp({super.key});
 
+  @override
+  State<TwitterApp> createState() => _TwitterAppState();
+}
+
+class _TwitterAppState extends State<TwitterApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //theme: lightTheme,
+      theme: lightTheme,
       darkTheme: darkTheme,
-      home: const HomePage(),
+      themeMode: _themeManager.themeMode,
+      home: const FirstPage(),
     );
   }
 }

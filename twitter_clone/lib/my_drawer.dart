@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:twitter_clone/theme/theme_manager.dart';
 
 import 'home_page.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  final ThemeManager _themeManager = ThemeManager();
+
+  @override
+  void dispose() {
+    _themeManager.removeListener(themeListener);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _themeManager.addListener(themeListener);
+    super.initState();
+  }
+
+  void themeListener() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) => Drawer(
@@ -144,9 +170,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     leading: Image.asset(
-                      'assets/icons/xlogo.png',
-                      width: 20,
-                      height: 20,
+                      'assets/icons/icons8-twitter-24.png',
                       color: Theme.of(context).colorScheme.primary,
                     ),
                     title: const Text(
@@ -204,17 +228,27 @@ class MyDrawer extends StatelessWidget {
                     thickness: 0.5,
                     color: Theme.of(context).colorScheme.secondary,
                   ),
-                  const ListTile(
+                  ListTile(
                     title: Text(
                       'Settings and Support',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    trailing: Icon(Icons.arrow_drop_down),
+                    trailing: Image.asset(
+                      'assets/icons/arrowd.png',
+                      color: Colors.blue,
+                      width: 14,
+                      height: 14,
+                    ),
                   )
                 ]),
               ),
+              Switch(
+                  value: _themeManager.themeMode == ThemeMode.dark,
+                  onChanged: (newvalue) {
+                    _themeManager.toggleTheme(newvalue);
+                  })
             ],
           ),
         ),

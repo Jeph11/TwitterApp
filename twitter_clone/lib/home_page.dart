@@ -6,7 +6,11 @@ import 'package:twitter_clone/bottomNav/home.dart';
 import 'package:twitter_clone/bottomNav/inbox.dart';
 import 'package:twitter_clone/bottomNav/search.dart';
 import 'package:twitter_clone/float_Act.dart';
+import 'package:twitter_clone/home_appbar/follower.dart';
 import 'package:twitter_clone/my_drawer.dart';
+
+import 'home_appbar/for_you.dart';
+import 'main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,7 +23,9 @@ class _HomePageState extends State<HomePage> {
   int selectedTabIndex = 0;
   final pageController = PageController(initialPage: 0);
   List<String> tabNames = ['For you', 'Folllowing'];
-  int currentIndex = 0;
+
+  static const int forYouPageIndex = 0;
+  static const int followingPageIndex = 1;
 
   final screens = [
     const HomeIcon(),
@@ -41,8 +47,11 @@ class _HomePageState extends State<HomePage> {
     fontWeight: FontWeight.normal,
   );
 
+  int currentIndex = forYouPageIndex;
+
   void selectTab(int index) {
     setState(() {
+      currentIndex = index;
       selectedTabIndex = index;
       pageController.animateToPage(
         index,
@@ -98,8 +107,7 @@ class _HomePageState extends State<HomePage> {
           title: IconButton(
             onPressed: () {},
             icon: Image.asset(
-              'assets/icons/xlogo.png',
-              scale: 60,
+              'assets/icons/icons8-twitter-24.png',
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
@@ -160,40 +168,15 @@ class _HomePageState extends State<HomePage> {
         ),
         body: PageView(
           controller: pageController,
-          children: [
-            Container(
-              // For You Page
-
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'For You Page',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    // Add your For You page content here
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              // Following Page
-
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Following Page',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    // Add your Following page content here
-                  ],
-                ),
-              ),
-            ),
+          children: const [
+            // For You Page
+            ForYouPage(), FollowingPage(),
           ],
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
@@ -209,7 +192,9 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Theme.of(context).colorScheme.background,
               elevation: 2,
               currentIndex: currentIndex,
-              onTap: (value) {},
+              onTap: (index) {
+                selectTab(index);
+              },
               items: [
                 BottomNavigationBarItem(
                   icon: Image.asset(
@@ -222,32 +207,63 @@ class _HomePageState extends State<HomePage> {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/search.png',
-                    scale: 2,
-                  ),
+                  icon: InkWell(
+                      child: Image.asset(
+                        'assets/icons/search.png',
+                        scale: 1,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchIcon()));
+                      }),
                   label: 'search',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/personsss.png',
-                    scale: 4,
-                    color: Theme.of(context).colorScheme.primary,
+                  icon: InkWell(
+                    child: Image.asset(
+                      'assets/icons/persons.png',
+                      scale: 4,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CommunityIcon()));
+                    },
                   ),
-                  label: 'person',
+                  label: 'persons',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/notification.png',
-                    color: Theme.of(context).colorScheme.primary,
+                  icon: InkWell(
+                    child: Image.asset(
+                      'assets/icons/notification.png',
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NotificationIcon()));
+                    },
                   ),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/inbox.png',
-                    scale: 22,
-                    color: Theme.of(context).colorScheme.primary,
+                  icon: InkWell(
+                    child: Image.asset(
+                      'assets/icons/inbox.png',
+                      scale: 22,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InboxIcon()));
+                    },
                   ),
                   label: 'inbox',
                 )
