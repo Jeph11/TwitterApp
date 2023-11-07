@@ -94,7 +94,7 @@ class _FollowingPageState extends State<FollowingPage> {
                                         Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 120,
                                 ),
                                 Image.asset(
@@ -106,7 +106,7 @@ class _FollowingPageState extends State<FollowingPage> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -115,27 +115,27 @@ class _FollowingPageState extends State<FollowingPage> {
                               color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
                             clipBehavior: Clip.none,
                             width: 300,
                             height: 200,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.blue,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             child: ClipRRect(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               child: Image.asset(
                                 post['imageAsset'],
                                 fit: BoxFit.fill,
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           SizedBox(

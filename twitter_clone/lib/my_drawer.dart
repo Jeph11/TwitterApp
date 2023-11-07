@@ -12,7 +12,6 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) => Drawer(
-      
         elevation: 2,
         shadowColor: Colors.grey,
         child: Padding(
@@ -221,7 +220,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   )
                 ]),
               ),
-              ChangeThemeButtonWidget(),
+              const ChangeThemeButtonWidget(),
             ],
           ),
         ),
