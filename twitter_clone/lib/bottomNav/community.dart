@@ -7,16 +7,15 @@ class CommunityIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Theme.of(context).colorScheme.background,
             body: Column(
-              children: [
-                Text(
-                  '@ojepht',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-              ],
-            )));
+      children: [
+        Text(
+          '@ojepht',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+        ),
+      ],
+    )));
   }
 }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:twitter_clone/theme/theme_manager.dart';
 
-import 'home_page.dart';
+import 'change_theme_button_widget.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -13,29 +10,9 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  final ThemeManager _themeManager = ThemeManager();
-
-  @override
-  void dispose() {
-    _themeManager.removeListener(themeListener);
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    _themeManager.addListener(themeListener);
-    super.initState();
-  }
-
-  void themeListener() {
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
   @override
   Widget build(BuildContext context) => Drawer(
-        backgroundColor: Theme.of(context).colorScheme.background,
+      
         elevation: 2,
         shadowColor: Colors.grey,
         child: Padding(
@@ -51,7 +28,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     IconButton(
                       onPressed: () {},
                       icon: const CircleAvatar(
-                        radius: 50,
+                        radius: 80.5,
                         backgroundColor: Colors.lightBlue,
                         backgroundImage: AssetImage(
                           'assets/images/jeff.png',
@@ -229,7 +206,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       'Settings and Support',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -244,11 +221,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   )
                 ]),
               ),
-              Switch(
-                  value: _themeManager.themeMode == ThemeMode.dark,
-                  onChanged: (newvalue) {
-                    _themeManager.toggleTheme(newvalue);
-                  })
+              ChangeThemeButtonWidget(),
             ],
           ),
         ),

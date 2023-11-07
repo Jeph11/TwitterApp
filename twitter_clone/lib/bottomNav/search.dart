@@ -12,16 +12,15 @@ class _SearchIconState extends State<SearchIcon> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Theme.of(context).colorScheme.background,
             body: Column(
-              children: [
-                Text(
-                  '@ojephthans',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-              ],
-            )));
+      children: [
+        Text(
+          '@ojephthans',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+        ),
+      ],
+    )));
   }
 }

@@ -1,39 +1,39 @@
 import 'package:flutter/material.dart';
 
-class ForYouPage extends StatefulWidget {
-  const ForYouPage({Key? key});
+class AllPage extends StatefulWidget {
+  const AllPage({Key? key}) : super(key: key);
 
   @override
-  State<ForYouPage> createState() => _ForYouPageState();
+  State<AllPage> createState() => _AllPageState();
 }
 
-class _ForYouPageState extends State<ForYouPage> {
+class _AllPageState extends State<AllPage> {
   // Define your data source here
   List<Map<String, dynamic>> posts = [
     {
       'name': 'Robert Scoble',
       'username': 'ojephthans',
       'time': '1d',
-      'content': 'Trading is not for everyone',
-      'Profile': 'assets/images/profile_pic.png',
-      'imageAsset': 'assets/images/photo2.jpg',
+      'content': "Zoo in the 90's",
+      'Profile': 'assets/images/profile_pic2.png',
+      'imageAsset': 'assets/images/photo3.jpg',
     },
     {
       'name': 'John Doe',
       'username': 'johndoe',
       'time': '2d',
-      'content': 'Myth or Fact',
-      'profile': 'assets/images/jeff.png',
-      'imageAsset': 'assets/images/photo1.jpg',
+      'content': 'Did You??',
+      'profile': 'assets/images/profile_pic.png',
+      'imageAsset': 'assets/images/photo6.jpg',
     },
 
     {
       'name': 'Elvis Owusu',
       'username': 'own_man',
       'time': '4d',
-      'content': 'Condition For Receiving Marvelous Light',
-      'profile': 'assets/images/person01.png',
-      'imageAsset': 'assets/images/photo5.jpg',
+      'content': 'Generated this 3D PIC with BING',
+      'profile': 'assets/images/person02.png',
+      'imageAsset': 'assets/images/photo7.jpg',
     },
     // Add more posts as needed
   ];

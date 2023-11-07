@@ -20,16 +20,17 @@ class _FirstPageState extends State<FirstPage> {
             color: Theme.of(context).colorScheme.background,
           ),
           Positioned(
-            top: 10,
             right: 90,
             left: 90,
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: CircleAvatar(
+                backgroundColor: Colors.lightBlue,
                 child: ClipOval(
                   child: Image.asset(
                     'assets/images/jeff.png',
-                    height: 220,
+                    height: 230,
+                    width: 240,
                   ),
                 ),
               ),
@@ -40,18 +41,16 @@ class _FirstPageState extends State<FirstPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
-                const Text(
-                  'Hello!',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Image.asset(
+                  'assets/icons/icons8-twitter-24.png',
+                  color: Theme.of(context).colorScheme.primary,
+                  width: 80,
+                  height: 80,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 5,
                 ),
                 Text(
                   'Jephtha Owusu Ansah',
@@ -84,19 +83,23 @@ class _FirstPageState extends State<FirstPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomePage()));
+                          builder: (context) => const DefaultTabController(
+                              length: 2, child: HomePage())));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 54,
                   decoration: const BoxDecoration(
-                    color: Colors.black,
+                    color: Colors.lightBlue,
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Log In',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 15),
                     ),
                   ),
                 ),

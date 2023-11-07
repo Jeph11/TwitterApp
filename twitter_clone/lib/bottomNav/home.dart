@@ -12,7 +12,7 @@ class _HomeIconState extends State<HomeIcon> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Theme.of(context).colorScheme.background,
+          
             body: Column(
               children: [
                 Text(

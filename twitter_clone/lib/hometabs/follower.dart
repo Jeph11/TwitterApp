@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FollowingPage extends StatefulWidget {
-  const FollowingPage({Key? key});
-
+  const FollowingPage({Key? key}) : super(key: key);
   @override
   State<FollowingPage> createState() => _FollowingPageState();
 }
