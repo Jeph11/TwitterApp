@@ -11,6 +11,8 @@ import 'hometabs/for_you.dart';
 
 import 'my_drawer.dart';
 
+bool click = true;
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -53,6 +55,7 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
+  bool click = true;
   @override
   Widget build(BuildContext context) {
     final defaultTextStyle = TextStyle(
@@ -96,6 +99,18 @@ class _HomePageState extends State<HomePage>
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'assets/icons/settings.png',
+                width: 30,
+                height: 30,
+                color: Theme.of(context).colorScheme.primary,
+                scale: 2,
+              ),
+            )
+          ],
           centerTitle: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
@@ -151,27 +166,32 @@ class _HomePageState extends State<HomePage>
             elevation: 2,
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  'assets/icons/homenf.png',
-                  width: 30,
-                  height: 30,
-                  color: Theme.of(context).colorScheme.primary,
-                  scale: 2,
-                ),
-                // activeIcon: Image.asset(
-                //   'assets/icons/homef.png',
-                //   width: 30,
-                //   height: 30,
-                //   color: Theme.of(context).colorScheme.primary,
-                //   scale: 2,
-                // ),
+                icon: InkWell(
+                    child: Image.asset(
+                      (click == false)
+                          ? 'assets/icons/homenf.png'
+                          : 'assets/icons/homef.png',
+                      width: 30,
+                      height: 30,
+                      color: Theme.of(context).colorScheme.primary,
+                      scale: 2,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                      setState(() {
+                        click = !click;
+                      });
+                    }),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: InkWell(
                     child: Image.asset(
                       'assets/icons/search.png',
-                      scale: 1,
+                      scale: 24,
                     ),
                     onTap: () {
                       Navigator.push(
@@ -184,8 +204,10 @@ class _HomePageState extends State<HomePage>
               BottomNavigationBarItem(
                 icon: InkWell(
                   child: Image.asset(
-                    'assets/icons/persons.png',
-                    scale: 4,
+                    (click == false)
+                        ? 'assets/icons/persons.png'
+                        : 'assets/icons/personnn.png',
+                    scale: 6,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   onTap: () {
@@ -193,14 +215,11 @@ class _HomePageState extends State<HomePage>
                         context,
                         MaterialPageRoute(
                             builder: (context) => const CommunityIcon()));
+
+                    setState(() {
+                      click = !click;
+                    });
                   },
-                ),
-                activeIcon: Image.asset(
-                  'assets/icons/personnn.png',
-                  width: 30,
-                  height: 30,
-                  color: Theme.of(context).colorScheme.primary,
-                  scale: 2,
                 ),
                 label: 'persons',
               ),

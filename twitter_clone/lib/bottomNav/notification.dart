@@ -53,6 +53,10 @@ class _NotificationIconState extends State<NotificationIcon>
     super.dispose();
   }
 
+  bool click = true;
+
+  bool click1 = true;
+
   @override
   Widget build(BuildContext context) {
     final defaultTextStyle = TextStyle(
@@ -76,18 +80,11 @@ class _NotificationIconState extends State<NotificationIcon>
             onPressed: () {
               return Scaffold.of(context).openDrawer();
             },
-            icon: SizedBox(
-              width: 150.0,
-              height: 150.0,
+            icon: const SizedBox(
               child: CircleAvatar(
+                radius: 100.5,
                 backgroundColor: Colors.lightBlue,
-                child: ClipOval(
-                  child: Image.asset(
-                    'assets/images/jeff.png',
-                    height: 220,
-                    width: 220,
-                  ),
-                ),
+                backgroundImage: AssetImage('assets/images/jeff.png'),
               ),
             ),
           );
@@ -106,6 +103,18 @@ class _NotificationIconState extends State<NotificationIcon>
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              'assets/icons/settings.png',
+              width: 30,
+              height: 30,
+              color: Theme.of(context).colorScheme.primary,
+              scale: 2,
+            ),
+          )
+        ],
         centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(30),
@@ -163,7 +172,9 @@ class _NotificationIconState extends State<NotificationIcon>
               BottomNavigationBarItem(
                 icon: InkWell(
                     child: Image.asset(
-                      'assets/icons/homenf.png',
+                      (click1 == false)
+                          ? 'assets/icons/homenf.png'
+                          : 'assets/icons/homef.png',
                       width: 30,
                       height: 30,
                       color: Theme.of(context).colorScheme.primary,
@@ -174,21 +185,17 @@ class _NotificationIconState extends State<NotificationIcon>
                           context,
                           MaterialPageRoute(
                               builder: (context) => const HomePage()));
+                      setState(() {
+                        click1 = !click1;
+                      });
                     }),
-                // activeIcon: Image.asset(
-                //   'assets/icons/homef.png',
-                //   width: 30,
-                //   height: 30,
-                //   color: Theme.of(context).colorScheme.primary,
-                //   scale: 2,
-                // ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: InkWell(
                     child: Image.asset(
                       'assets/icons/search.png',
-                      scale: 1,
+                      scale: 24,
                     ),
                     onTap: () {
                       Navigator.push(
@@ -201,8 +208,10 @@ class _NotificationIconState extends State<NotificationIcon>
               BottomNavigationBarItem(
                 icon: InkWell(
                   child: Image.asset(
-                    'assets/icons/persons.png',
-                    scale: 4,
+                    (click == false)
+                        ? 'assets/icons/persons.png'
+                        : 'assets/icons/personnn.png',
+                    scale: 6,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   onTap: () {
@@ -210,6 +219,10 @@ class _NotificationIconState extends State<NotificationIcon>
                         context,
                         MaterialPageRoute(
                             builder: (context) => const CommunityIcon()));
+
+                    setState(() {
+                      click = !click;
+                    });
                   },
                 ),
                 label: 'persons',
@@ -243,7 +256,7 @@ class _NotificationIconState extends State<NotificationIcon>
                             builder: (context) => const InboxIcon()));
                   },
                 ),
-                label: 'inbox',
+                label: '',
               )
             ]),
       ),

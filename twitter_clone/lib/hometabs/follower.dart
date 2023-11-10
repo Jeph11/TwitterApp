@@ -69,41 +69,52 @@ class _FollowingPageState extends State<FollowingPage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  " ${post['name']}",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                            child: SizedBox(
+                              width: 320,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        " ${post['name']}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                      ),
+                                      Text(
+                                        " @${post['username']}",
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
+                                        ),
+                                      ),
+                                      Text(
+                                        " ${post['time']}",
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                Text(
-                                  " @${post['username']}",
-                                  style: TextStyle(
+                                  Image.asset(
+                                    'assets/icons/three-dots.png',
+                                    scale: 70,
                                     color:
                                         Theme.of(context).colorScheme.secondary,
-                                  ),
-                                ),
-                                Text(
-                                  " ${post['time']}",
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 120,
-                                ),
-                                Image.asset(
-                                  'assets/icons/three-dots.png',
-                                  scale: 70,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(

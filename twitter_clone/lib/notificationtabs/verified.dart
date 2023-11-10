@@ -90,25 +90,30 @@ class _VerifiedPageState extends State<VerifiedPage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CircleAvatar(
-                                  radius: 20.5,
-                                  backgroundColor: Colors.lightBlue,
-                                  backgroundImage:
-                                      AssetImage(profileImageAsset),
-                                ),
-                                const SizedBox(
-                                  width: 120,
-                                ),
-                                Image.asset(
-                                  'assets/icons/three-dots.png',
-                                  scale: 70,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                              ],
+                            child: SizedBox(
+                              width: 340,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20.5,
+                                    backgroundColor: Colors.lightBlue,
+                                    backgroundImage:
+                                        AssetImage(profileImageAsset),
+                                  ),
+                                  const SizedBox(
+                                    width: 120,
+                                  ),
+                                  Image.asset(
+                                    'assets/icons/three-dots.png',
+                                    scale: 70,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(

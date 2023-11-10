@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:twitter_clone/home_page.dart';
 
-class FloatAct extends StatelessWidget {
+class FloatAct extends StatefulWidget {
   const FloatAct({super.key});
+
+  @override
+  State<FloatAct> createState() => _FloatActState();
+}
+
+class _FloatActState extends State<FloatAct> {
+  final FocusNode _focusNode = FocusNode();
+  final TextEditingController _textEditingController = TextEditingController();
+  void updatedText(String newText) {
+    setState(() {
+      _textEditingController.text = newText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +58,7 @@ class FloatAct extends StatelessWidget {
               ],
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IconButton(
                   onPressed: () {},
@@ -56,34 +70,24 @@ class FloatAct extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                    width: 90,
-                    height: 25,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(40),
-                      ),
-                      border: Border.all(color: Colors.blue),
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: SizedBox(
+                    width: 200,
+                    height: 105.0,
+                    child: EditableText(
+                      controller: _textEditingController,
+                      focusNode: _focusNode,
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black),
+                      cursorColor: Colors.black,
+                      backgroundCursorColor: Colors.transparent,
+                      maxLines: 4,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Public',
-                            style: TextStyle(fontSize: 15, color: Colors.blue),
-                          ),
-                          Image.asset(
-                            'assets/icons/arrowd.png',
-                            color: Colors.blue,
-                            width: 5,
-                            height: 5,
-                          ),
-                        ],
-                      ),
-                    ))
+                  ),
+                ),
               ],
             )
           ],
